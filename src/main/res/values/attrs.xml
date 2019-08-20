@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ChartView">
+        <attr name="labelsTextSize" format="dimension" />
+        <attr name="labelsTextFont" format="reference" />
+        <attr name="labelsTextColor" format="reference|color" />
+        <attr name="gridLineWidth" format="dimension" />
+        <attr name="gridLineColor" format="reference|color" />
+        <attr name="gridSize" format="dimension" />
+        <attr name="gridStartColor" format="reference|color" />
+        <attr name="gridEndColor" format="reference|color" />
+        <attr name="flexure" format="float" />
+        <attr name="chartLineStartColor" format="reference|color" />
+        <attr name="chartLineEndColor" format="reference|color" />
+    </declare-styleable>
+</resources>
