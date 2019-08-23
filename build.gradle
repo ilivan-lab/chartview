@@ -1,15 +1,45 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+ext {
+    bintrayRepo = 'Maven'
+    bintrayName = 'com.ilivan.chartview'
+
+    publishedGroupId = 'com.ilivan.chartview'
+    artifact = 'chartview'
+    libraryVersion = '1.0.0'
+
+    libraryName = 'ChartView'
+    libraryDescription = 'ChartView UI component for Android'
+
+    siteUrl = 'https://github.com/ilivan-lab/chartview'
+    gitUrl = 'https://github.com/ilivan-lab/chartview.git'
+
+    developerId = 'ilivan'
+    developerName = 'Ilivan.Lab'
+    developerEmail = 'ilivan.lab@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+
+    //Bintray Credentials
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+    bintrayUsername = properties.getProperty('BINTRAY_USERNAME')
+    bintrayUserOrg = properties.getProperty('BINTRAY_ORG')
+    bintrayApiKey = properties.getProperty('BINTRAY_API_KEY')
+}
 
 android {
     compileSdkVersion 28
-
-
-
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 28
         versionCode 1
-        versionName "1.0"
+        versionName libraryVersion
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -29,7 +59,6 @@ android {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.1.1'
 
     // Rebound
@@ -39,3 +68,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
+
+apply from: 'bintray.script'
