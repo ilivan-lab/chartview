@@ -122,6 +122,6 @@ Make sure you use Java 8. It should resolve this issue.
 License
 -------
 
-ChartView is licensed with the Apache-2.0 License. For more details, see [LICENSE](LICENSE).
+ChartView is licensed with the Apache License 2.0. For more details, see [LICENSE](LICENSE).
 
 
