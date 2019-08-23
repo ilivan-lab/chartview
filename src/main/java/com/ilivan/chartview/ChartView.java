@@ -28,7 +28,7 @@ import java.text.DecimalFormat;
  */
 public class ChartView extends FrameLayout {
 
-    private ChartDataSet mChartDataSet;
+    private ChartDataSet mChartDataSet = new ChartDataSet();
 
     public ChartView(Context context) {
         super(context);
@@ -197,7 +197,7 @@ public class ChartView extends FrameLayout {
         mGridLineWidth = context.obtainStyledAttributes(attrs, R.styleable.ChartView)
                 .getDimension(R.styleable.ChartView_gridLineWidth, 2f);
         mLabelsTextFont = context.obtainStyledAttributes(attrs, R.styleable.ChartView)
-                .getResourceId(R.styleable.ChartView_labelsTextFont, 0);
+                .getResourceId(R.styleable.ChartView_labelsTextFont, R.font.montserrat_medium);
         mFlexure = context.obtainStyledAttributes(attrs, R.styleable.ChartView)
                 .getFloat(R.styleable.ChartView_flexure, 0.5f);
         mLabelsTextColor = context.obtainStyledAttributes(attrs, R.styleable.ChartView)
