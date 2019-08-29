@@ -5,7 +5,7 @@ Introduction
 ------------
 Android UI component for shows charts. <br><br>
 ChartView uses Rebound library from Facebook to provide more realistic animation.<br><br>
-UI/UX design: [Designer name](https://google.com)
+UI/UX design: [Victoria Kosmovich](https://www.behance.net/vkosmovich)
 
 Demo
 ----
