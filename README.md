@@ -17,25 +17,25 @@ Get started
 
 #### Gradle
 
-```
-implementation 'com.ilivan.chartview:chartview:1.0.0'
+```gradle
+implementation 'com.ilivan.chartview:chartview:1.0.1'
 ```
 
 #### Maven
 
-```
+```xml
 <dependency>
   <groupId>com.ilivan.chartview</groupId>
   <artifactId>chartview</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <type>pom</type>
 </dependency>
 ```
 
 #### Ivy
 
-```
-<dependency org='com.ilivan.chartview' name='chartview' rev='1.0.0'>
+```xml
+<dependency org='com.ilivan.chartview' name='chartview' rev='1.0.1'>
   <artifact name='chartview' ext='pom' ></artifact>
 </dependency>
 ```
@@ -44,11 +44,11 @@ Usage
 -----
 
 Create instance of **ChartView**:
-```
+```java
 ChartView chartView = new ChartView(this);
 ```
 Generate data set for the chart:
-```
+```java
 ChartDataSet chartDataSet = new ChartDataSet.Builder()
         .add(0, 1.0f)
         .add(1, 2.0f)
@@ -58,13 +58,13 @@ ChartDataSet chartDataSet = new ChartDataSet.Builder()
         .build();
 ```
 Set the data and draw chart:
-```
+```java
 // this method will setting data and will drawing chart as well
 chartView.setChartDataSet(chartDataSet);
 ```
 ##### XML-layout
 
-```
+```xml
 <com.ilivan.chartview.ChartView
         android:layout_width="match_parent"
         android:layout_height="250dp"
@@ -96,7 +96,7 @@ If you don't want to use gradient filling for dots on the grid, you may use the 
 If you don't want to use gradient filling for chart line on the grid, you may use the same values for `chartLineEndColor` and `chartLineStartColor` parameters. <br>
 `flexure` - line bending coefficient (use `0..1` values). You may use this value like `0` if you don't need to curve chart line. <br><br>
 All this parameters you can set programmatically:
-```
+```java
 chartView.setChartLineStartColor();
 chartView.setChartLineEndColor();
 chartView.setGridLineColor();
@@ -107,13 +107,14 @@ chartView.setGridSize();
 chartView.setLabelsTextColor();
 chartView.setLabelsTextSize();
 chartView.setLabelsTextFont();
+chartView.setFlexure();
 ```
 
 Troubleshooting
 ---------------
 
 If you will see after trying to build project something like this:
-```
+```java
 Invoke-customs are only supported starting with Android O (--min-api 26)
 Message{kind=ERROR, text=Invoke-customs are only supported starting with Android O (--min-api 26), sources=[Unknown source file], tool name=Optional.of(D8)}
 ``` 

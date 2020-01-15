@@ -7,10 +7,11 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Shader;
 import android.os.Build;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.view.View;
+
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 /**
  * Chart
@@ -39,7 +40,12 @@ class Chart extends View {
     private ChartDataSet mChartDataSet;
     public void setChartDataSet(ChartDataSet mChartDataSet) {
         this.mChartDataSet = mChartDataSet;
-        this.post(Chart.this::invalidate);
+        this.post(new Runnable() {
+            @Override
+            public void run() {
+                Chart.this.invalidate();
+            }
+        });
     }
 
     private ChartDataSet getChartDataSet() {

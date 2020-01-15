@@ -8,16 +8,17 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Shader;
 import android.os.Build;
-import android.support.annotation.ColorInt;
-import android.support.annotation.Dimension;
-import android.support.annotation.FontRes;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.v4.content.res.ResourcesCompat;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.Dimension;
+import androidx.annotation.FontRes;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.core.content.res.ResourcesCompat;
 
 import java.text.DecimalFormat;
 
@@ -264,7 +265,12 @@ public class ChartView extends FrameLayout {
 
     public void setChartDataSet(ChartDataSet mChartDataSet) {
         this.mChartDataSet = mChartDataSet;
-        this.post(ChartView.this::invalidate);
+        this.post(new Runnable() {
+            @Override
+            public void run() {
+                ChartView.this.invalidate();
+            }
+        });
     }
 
     @Override
@@ -359,6 +365,10 @@ public class ChartView extends FrameLayout {
     private float mFlexure;
     public float getFlexure() {
         return mFlexure;
+    }
+
+    public void setFlexure(float flexure) {
+        mFlexure = flexure;
     }
 
 }
