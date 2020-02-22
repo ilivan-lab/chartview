@@ -19,6 +19,14 @@ public class ChartDataSet {
         return mMaxValue;
     }
 
+    public void setMaxValue(float maxValue) {
+        if (maxValue > mMaxValue.getY()) {
+            mMaxValue = new ChartPoint();
+            mMaxValue.setX(-1);
+            mMaxValue.setY(maxValue);
+        }
+    }
+
     public ChartPoint getMinValue() {
         return mMinValue;
     }

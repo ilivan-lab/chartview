@@ -309,9 +309,22 @@ public class ChartView extends FrameLayout {
     }
 
     private void drawAxisX(Canvas canvas) {
+        String lastValue = String.valueOf(((int) mChartDataSet.getPoints().get(getPointsCount() - 1).getX()));
+        Rect rectLastValue = new Rect();
+        mTextPaint.getTextBounds(lastValue, 0, lastValue.length(), rectLastValue);
+
+        float pointsCount = getPointsCount();
+        float labelsWidth = getPointsCount() * (rectLastValue.width() + 3);
+        while (labelsWidth >= getWidth() - marginGridLeft()) {
+            pointsCount = pointsCount / 2.0f;
+            labelsWidth = pointsCount * (rectLastValue.width() + 3);
+        }
+
+        int step = (int)(getPointsCount() / pointsCount);
+
         float scaleDivision = mChartGrid.getScaleDivisionX();
-        for (int i = 0; i < getPointsCount() - 1; i++) {
-            String labelText = String.valueOf(((int)mChartDataSet.getPoints().get(i).getX()));
+        for (int i = 0; i < getPointsCount() - 1; i += step) {
+            String labelText = String.valueOf(((int) mChartDataSet.getPoints().get(i).getX()));
             canvas.drawText(labelText, i * scaleDivision + marginGridLeft(), getHeight(), mTextPaint);
         }
     }
