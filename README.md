@@ -18,7 +18,7 @@ Get started
 #### Gradle
 
 ```gradle
-implementation 'com.ilivan.chartview:chartview:1.0.1'
+implementation 'com.ilivan.chartview:chartview:1.0.2'
 ```
 
 #### Maven
@@ -27,7 +27,7 @@ implementation 'com.ilivan.chartview:chartview:1.0.1'
 <dependency>
   <groupId>com.ilivan.chartview</groupId>
   <artifactId>chartview</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
   <type>pom</type>
 </dependency>
 ```
@@ -35,7 +35,7 @@ implementation 'com.ilivan.chartview:chartview:1.0.1'
 #### Ivy
 
 ```xml
-<dependency org='com.ilivan.chartview' name='chartview' rev='1.0.1'>
+<dependency org='com.ilivan.chartview' name='chartview' rev='1.0.2'>
   <artifact name='chartview' ext='pom' ></artifact>
 </dependency>
 ```
