@@ -173,6 +173,15 @@ public class ChartView extends FrameLayout {
         this.mChartLineEndColor = mChartLineEndColor;
     }
 
+    private int mThreshold;
+    public void setThreshold(int threshold) {
+        this.mThreshold = threshold;
+    }
+
+    public int getThreshold() {
+        return mThreshold;
+    }
+
     private ChartDataSet mPreviewChartDataSet = new ChartDataSet.Builder()
             .add(0, 7.0f)
             .add(1, 12.4f)
@@ -201,6 +210,8 @@ public class ChartView extends FrameLayout {
                 .getResourceId(R.styleable.ChartView_labelsTextFont, R.font.montserrat_medium);
         mFlexure = context.obtainStyledAttributes(attrs, R.styleable.ChartView)
                 .getFloat(R.styleable.ChartView_flexure, 0.5f);
+        mThreshold = context.obtainStyledAttributes(attrs, R.styleable.ChartView)
+                .getInteger(R.styleable.ChartView_threshold, -1);
         mLabelsTextColor = context.obtainStyledAttributes(attrs, R.styleable.ChartView)
                 .getColor(R.styleable.ChartView_labelsTextColor, Color.BLACK);
         mGridLineColor = context.obtainStyledAttributes(attrs, R.styleable.ChartView)
@@ -225,6 +236,7 @@ public class ChartView extends FrameLayout {
         mChart.setMarginGridLeft(mChartGrid.getMarginLeft());
         mChart.setScaleDivisionX(mChartGrid.getScaleDivisionX());
         mChart.setFlexure(mFlexure);
+        mChart.setThreshold(mThreshold);
     }
 
     private Paint mTextPaint = new Paint();
@@ -335,8 +347,13 @@ public class ChartView extends FrameLayout {
 
     private void drawAxisY(Canvas canvas) {
         float chartGridHeight = mChartGrid.getHeight();
-        float maxValue = mChartDataSet.getMaxValue().getY();
         float scaleDivision = mChartGrid.getScaleDivisionY();
+        float maxValue;
+        if (mThreshold == -1) {
+            maxValue = mChartDataSet.getMaxValue().getY();
+        } else {
+            maxValue = mThreshold;
+        }
 
         for (float i = chartGridHeight; i > 0; i -= scaleDivision) {
             float axisYLabelValue = Math.abs(i * maxValue / chartGridHeight - maxValue);

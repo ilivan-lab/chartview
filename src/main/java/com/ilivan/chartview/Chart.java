@@ -114,7 +114,12 @@ class Chart extends View {
         float prevX = mMarginGridLeft;
         float prevY = getHeight() - mMarginGridBottom;
 
-        float maxValue = mChartDataSet.getMaxValue().getY();
+        float maxValue;
+        if (mThreshold == -1) {
+            maxValue = mChartDataSet.getMaxValue().getY();
+        } else {
+            maxValue = mThreshold;
+        }
 
         mChartFigurePath.reset();
         mChartFigurePath.moveTo(prevX, prevY);
@@ -156,6 +161,11 @@ class Chart extends View {
     private float mFlexure;
     void setFlexure(float flexure) {
         mFlexure = flexure;
+    }
+
+    private int mThreshold;
+    void setThreshold(int threshold) {
+        mThreshold = threshold;
     }
 
     private float computeDelta(float coorX, float prevX) {
