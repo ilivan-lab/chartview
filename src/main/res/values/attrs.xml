@@ -10,6 +10,7 @@
         <attr name="gridStartColor" format="reference|color" />
         <attr name="gridEndColor" format="reference|color" />
         <attr name="flexure" format="float" />
+        <attr name="threshold" format="integer"/>
         <attr name="chartLineStartColor" format="reference|color" />
         <attr name="chartLineEndColor" format="reference|color" />
     </declare-styleable>
