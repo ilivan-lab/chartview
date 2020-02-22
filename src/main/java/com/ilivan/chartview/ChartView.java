@@ -309,7 +309,11 @@ public class ChartView extends FrameLayout {
     }
 
     private void drawAxisX(Canvas canvas) {
-        String lastValue = String.valueOf(((int) mChartDataSet.getPoints().get(getPointsCount() - 1).getX()));
+        String lastValue = "0";
+        if (mChartDataSet.getPoints().size() > 0) {
+            lastValue = String.valueOf(((int) mChartDataSet.getPoints().get(getPointsCount() - 1).getX()));
+        }
+
         Rect rectLastValue = new Rect();
         mTextPaint.getTextBounds(lastValue, 0, lastValue.length(), rectLastValue);
 
